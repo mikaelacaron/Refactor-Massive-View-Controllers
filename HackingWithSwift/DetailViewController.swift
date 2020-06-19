@@ -13,7 +13,9 @@ class DetailViewController: UIViewController, Storyboarded {
     var project: Project!
     
     override func loadView() {
-        view = DetailView(project: project, readAction: readProject)
+        view = DetailView(project: project) { [weak self] in
+            self?.readProject()
+        }
     }
     
     override func viewDidLoad() {
